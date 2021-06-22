@@ -45,10 +45,10 @@ services:
         protocol: tcp
         mode: host
     environment:
-      MYSQL_ROOT_PASSWORD: docker
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: "${ MYSQL_ROOT_PASSWORD }"
+      MYSQL_DATABASE: "${ MYSQL_DATABASE }"
+      MYSQL_USER: "${ MYSQL_USER }"
+      MYSQL_PASSWORD: "${ MYSQL_PASSWORD }"
       TZ: Europe/Kiev
     volumes:
       - ./mysql:/var/lib/mysql
@@ -67,9 +67,9 @@ services:
     restart: always
     environment:
       WORDPRESS_DB_HOST: mysql:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: "${ WORDPRESS_DB_USER }"
+      WORDPRESS_DB_PASSWORD: "${ WORDPRESS_DB_PASSWORD }"
+      WORDPRESS_DB_NAME: "${ WORDPRESS_DB_NAME }"
     links:
       - mysql
     restart: always
